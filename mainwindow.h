@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "tcpclientsocket.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -15,12 +17,21 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void doConnect();
-
 public slots:
 
 
+private slots:
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_Connect_clicked();
+
+    void on_Disconnect_clicked();
+
 private:
     Ui::MainWindow *ui;
+    TcpClientSocket tcpclientROV;
+
 };
 #endif // MAINWINDOW_H

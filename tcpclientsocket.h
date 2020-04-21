@@ -3,6 +3,11 @@
 
 #include <QObject>
 #include <QTcpSocket>
+#include <QAbstractSocket>
+#include <QDebug>
+
+#define ADDRESS     "127.0.0.1"
+#define PORT        4242
 
 class TcpClientSocket : public QObject
 {
@@ -10,15 +15,19 @@ class TcpClientSocket : public QObject
 public:
     explicit TcpClientSocket(QObject *parent = nullptr);
 
-    void doConnect();
+    bool doConnect();
+    void disconnect();
+    void writebytes(QByteArray bytes);
 
 signals:
 
 public slots:
     void onReadyRead();
 
+
+
 private:
-    QTcpSocket _socket;
+    QTcpSocket socket;
 
 };
 

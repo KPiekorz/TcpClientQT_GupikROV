@@ -5,14 +5,38 @@
 
 TcpClientSocket::TcpClientSocket(QObject *parent) : QObject(parent)
 {
-    _socket.connectToHost(QHostAddress("127.0.0.1"), 4242);
-    connect(&_socket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
+
+    connect(&socket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
+
+}
+
+bool TcpClientSocket::doConnect(){
+
+    socket.connectToHost(QHostAddress(ADDRESS), PORT);
+
+    if(!socket.waitForConnected(5000)){
+        return false;
+    }
+    return true;
+}
+
+void TcpClientSocket::disconnect(){
+
+    socket.close();
+
+}
+
+void TcpClientSocket::writebytes(QByteArray bytes){
+
+    socket.write(bytes);
+
 }
 
 
 void TcpClientSocket::onReadyRead()
 {
-    QByteArray datas = _socket.readAll();
+
+    QByteArray datas = socket.readAll();
     qDebug() << datas;
-    _socket.write(QByteArray("ok !\n"));
+
 }
