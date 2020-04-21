@@ -31,3 +31,15 @@ void MainWindow::on_pushButton_3_clicked()
     tcpclientROV.disconnect();
     ui->label->setText("Disconnected!");
 }
+
+void MainWindow::on_Command1_clicked()
+{
+    tcpclientROV.writebytes(QByteArray("hejka"));
+}
+
+
+
+void MainWindow::on_Command2_clicked()
+{
+    tcpclientROV.writebytes(QByteArray("hejka2"));
+}
