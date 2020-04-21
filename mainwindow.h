@@ -25,10 +25,6 @@ private slots:
 
     void on_pushButton_3_clicked();
 
-    void on_Connect_clicked();
-
-    void on_Disconnect_clicked();
-
 private:
     Ui::MainWindow *ui;
     TcpClientSocket tcpclientROV;
