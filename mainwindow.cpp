@@ -34,7 +34,12 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_Command1_clicked()
 {
-    tcpclientROV.writebytes(QByteArray("hejka"));
+    CommandPacket command;
+    command.ConstructCommadSensorPacket(sensor_standard);
+
+    qDebug() << command.commad_sensor_pakcet;
+
+//    tcpclientROV.writebytes(QByteArray("hejka"));
 }
 
 

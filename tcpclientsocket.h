@@ -6,7 +6,7 @@
 #include <QAbstractSocket>
 #include <QDebug>
 
-#define ADDRESS     "127.0.0.1"
+#define ADDRESS     "169.254.0.20"
 #define PORT        4242
 
 class TcpClientSocket : public QObject
