@@ -5,16 +5,19 @@
 #include <QVector>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
+
+#include <QDebug>
 
 /* packet type for command packet */
 enum{
-    sensor_command  = 0x01,
+    sensor_command  = 1,
     motor_command
 };
 
 /* parametr 0 value */
 enum{
-    sensor_standard = 0x01,
+    sensor_standard = 1,
     accel_calibration
 };
 
@@ -22,7 +25,7 @@ class CommandPacket
 {
 private:
 
-    int16_t CalculateCheckSum(QByteArray command_packet, int command_packet_length);
+    uint16_t CalculateCheckSum(QByteArray command_packet, int command_packet_length);
 
 public:
     CommandPacket();

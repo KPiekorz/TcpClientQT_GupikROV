@@ -32,19 +32,17 @@ void MainWindow::on_pushButton_3_clicked()
     ui->label->setText("Disconnected!");
 }
 
-void MainWindow::on_Command1_clicked()
+void MainWindow::on_Command1_clicked() // wysylanie komendy sterujaca czujnikami
 {
     CommandPacket command;
     command.ConstructCommadSensorPacket(sensor_standard);
 
-    qDebug() << command.commad_sensor_pakcet;
-
-//    tcpclientROV.writebytes(QByteArray("hejka"));
+    tcpclientROV.writebytes(command.commad_sensor_pakcet);
 }
 
 
 
-void MainWindow::on_Command2_clicked()
+void MainWindow::on_Command2_clicked() // wysylanie komendy sterujacymi silnikami
 {
     tcpclientROV.writebytes(QByteArray("hejka2"));
 }
