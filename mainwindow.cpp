@@ -37,12 +37,15 @@ void MainWindow::on_Command1_clicked() // wysylanie komendy sterujaca czujnikami
     CommandPacket command;
     command.ConstructCommadSensorPacket(sensor_standard);
 
+    qDebug() << command.commad_sensor_pakcet;
+
     tcpclientROV.writebytes(command.commad_sensor_pakcet);
 }
 
 
 
-void MainWindow::on_Command2_clicked() // wysylanie komendy sterujacymi silnikami
+void MainWindow::on_Command2_clicked() // wysylanie komendy sterujacymi silnikamia
 {
-    tcpclientROV.writebytes(QByteArray("hejka2"));
+    tcpclientROV.writebytes(QByteArray("hejka2"));    
+
 }

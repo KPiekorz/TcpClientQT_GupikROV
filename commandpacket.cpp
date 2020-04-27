@@ -4,7 +4,7 @@
 CommandPacket::CommandPacket()
 {
     /* initialize command sensor packet */
-    commad_sensor_pakcet.resize(7);
+    commad_sensor_pakcet.resize(8);
     commad_sensor_pakcet.clear();
 
 }
@@ -29,12 +29,13 @@ void CommandPacket::ConstructCommadSensorPacket(int sensor_command_parameter_val
     commad_sensor_pakcet[2] = 'p';
 
     commad_sensor_pakcet[3] = (char)sensor_command; // command number
-    commad_sensor_pakcet[4] = (char)sensor_command_parameter_value; // parametr 0 value
+    commad_sensor_pakcet[4] = 1; // parametr number (data_length)
+    commad_sensor_pakcet[5] = (char)sensor_command_parameter_value; // parametr 0 value
 
-    uint16_t checksum = CalculateCheckSum(commad_sensor_pakcet, 5);
+    uint16_t checksum = CalculateCheckSum(commad_sensor_pakcet, 6);
 
-    commad_sensor_pakcet[5] = (char)(checksum>>8);
-    commad_sensor_pakcet[6] = (char)(checksum&0xFF);
+    commad_sensor_pakcet[6] = (char)(checksum>>8);
+    commad_sensor_pakcet[7] = (char)(checksum&0xFF);
 
 //    char output_data[200] = "";
 //    sprintf(output_data, "hej: %x %x\n\r",(int) commad_sensor_pakcet[5], (int)commad_sensor_pakcet[6]);

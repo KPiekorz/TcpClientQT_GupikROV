@@ -37,6 +37,7 @@ void TcpClientSocket::onReadyRead()
 {
 
     QByteArray datas = socket.readAll();
-    qDebug() << datas;
+
+    eth_data.ParseReceivedEthData(datas);
 
 }

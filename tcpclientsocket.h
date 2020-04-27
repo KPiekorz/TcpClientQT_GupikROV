@@ -6,6 +6,8 @@
 #include <QAbstractSocket>
 #include <QDebug>
 
+#include "datapacket.h"
+
 #define ADDRESS     "169.254.0.20"
 #define PORT        4242
 
@@ -28,6 +30,8 @@ public slots:
 
 private:
     QTcpSocket socket;
+
+    DataPacket eth_data;
 
 };
 
