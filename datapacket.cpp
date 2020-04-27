@@ -19,6 +19,7 @@ int DataPacket::ParseReceivedEthData(QByteArray eth_data){
 
     qDebug() << eth_data;
 
+    /* tempolary variable */
     int index = 0;
     int calc_checksum = 0;
     int eth_data_length = eth_data.length();
@@ -53,11 +54,6 @@ int DataPacket::ParseReceivedEthData(QByteArray eth_data){
     checksum = buf;
 
     QChar znak = eth_data.at(index);
-
-    qDebug() << znak.script();
-    qDebug() << znak;
-    qDebug() << calc_checksum;
-    qDebug() << checksum;
 
     if(calc_checksum != checksum) return checksum_error;
 
