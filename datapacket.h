@@ -18,9 +18,10 @@ private:
 
     int packt_type;
     int data_length;
-    QByteArray data;
+    int data[30];
     int checksum;
 
+    int QBytetoInt(char data);
 
 public:
     DataPacket();

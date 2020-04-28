@@ -5,6 +5,7 @@
 #include <QTcpSocket>
 #include <QAbstractSocket>
 #include <QDebug>
+#include <string>
 
 #include "datapacket.h"
 
