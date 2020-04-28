@@ -23,10 +23,15 @@ private:
 
     int QBytetoInt(char data);
 
+    /* private function */
+    int ParseReceivedEthData(QByteArray eth_data);
+
+
 public:
     DataPacket();
 
-    int ParseReceivedEthData(QByteArray eth_data);
+    /*
+    void ConvertEthData(QByteArray eth_data);
 
     /*
      * Narazie funckja do wyciagania odpowiednich wartosci z odebranych danych
