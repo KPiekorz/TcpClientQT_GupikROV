@@ -38,6 +38,6 @@ void TcpClientSocket::onReadyRead()
 
     QByteArray datas = socket.readAll();
 
-    eth_data.ParseReceivedEthData(datas);
+    eth_data.ConvertEthData(datas);
 
 }

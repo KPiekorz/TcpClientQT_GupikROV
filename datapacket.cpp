@@ -7,6 +7,31 @@ DataPacket::DataPacket()
     checksum = 0;
 }
 
+void DataPacket::ConvertEthData(QByteArray eth_data){
+
+    int parse_status = ParseReceivedEthData(eth_data);
+
+    if(parse_status != eth_packet_ok){
+        qDebug() << "Error: " << parse_status;
+    }
+
+    switch (packt_type) {
+    case sensor_data_standart:
+
+        qDebug() << "imu i press";
+
+        break;
+    case motor_data_standard:
+
+        qDebug() << "motro speed";
+
+        break;
+    default:
+        qDebug() << "No matching data type!";
+        break;
+    }
+
+}
 
 int DataPacket::ParseReceivedEthData(QByteArray eth_data){
 
@@ -55,8 +80,8 @@ int DataPacket::ParseReceivedEthData(QByteArray eth_data){
     index++; buf = buf|QBytetoInt(eth_data[index]);
     checksum = buf;
 
-    qDebug() << calc_checksum;
-    qDebug() << checksum;
+//    qDebug() << calc_checksum;
+//    qDebug() << checksum;
 
     if(calc_checksum != checksum) return checksum_error;
 
